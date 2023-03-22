@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -55,6 +55,6 @@
 		</div>
 	</nav>
 	<br>
-	<h2 align="center"style=color:green>Your Account Balance is ₹ </h2>
+	<h2 align="center"style=color:green>Your Account Balance is <span th:text="${balance}"></span> ₹ </h2>
 </body>
 </html>

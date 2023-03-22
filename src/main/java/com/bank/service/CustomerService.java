@@ -1,5 +1,7 @@
 package com.bank.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,12 @@ public class CustomerService {
 		}
 		return false;
 
+	}
+
+	public Optional<Customer> fetchcustomerDetails(int id) {
+		Optional<Customer> findById = bankRepository.findById(id);
+		return findById;
+		
 	}
 
 }

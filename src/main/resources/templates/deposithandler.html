@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -55,10 +55,10 @@
 		</div>
 	</nav>
 	<br>
-	<h2 align="center" style="color: green">Amount is Successfully
-		Deposited to Your Account</h2>
-	<h3 align="center" style="color: violet">You Can Now Check Your
-		Account Balance</h3>
+	<h2 align="center" style="color: green"> Your ₹ <span th:text="${depAmount}"></span> Amount has been Successfully
+		Deposited into Your Account</h2>
+	<h3 align="center" style="color: violet">You can go for check further details
+		</h3>
 
 </body>
 </html>

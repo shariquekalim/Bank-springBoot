@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Transfer Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Money Transfer Form</h1>
+
+    <form>
+      <div class="mb-3">
+        <label for="bankSelect" class="form-label">Select Bank</label>
+        <select class="form-select" id="bankSelect" name="bankSelect">
+          <option value="bank1">SBI</option>
+          <option value="bank2">HDFC</option>
+          <option value="bank3">Axis Bank</option>
+          <option value="bank3">Paytm Bank</option>
+          <option value="bank3">Union Bank</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="accountNumber" class="form-label">Account Number</label>
+        <input type="text" class="form-control" id="accountNumber" name="ac" placeholder="Enter Account Number">
+      </div>
+
+      <div class="mb-3">
+        <label for="nickname" class="form-label">Nickname (Optional)</label>
+        <input type="text" class="form-control" id="nickname" name="name" placeholder="Enter Nickname">
+      </div>
+
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <div class="input-group">
+          <span class="input-group-text">₹</span>
+          <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter Amount">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Proceed</button>
+    </form>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

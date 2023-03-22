@@ -1,18 +1,23 @@
 
 package com.bank.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bank.entity.Customer;
 import com.bank.entity.Login;
+import com.bank.entity.PassBook;
 import com.bank.service.CustomerService;
 import com.bank.service.LoginService;
+import com.bank.service.PassBookService;
 
 @Controller
 public class BankController {
@@ -22,6 +27,9 @@ public class BankController {
 
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private PassBookService bookService;
 
 	@GetMapping("/")
 	public String home() {
@@ -75,12 +83,17 @@ public class BankController {
 
 	
 	@GetMapping("/deposit")
-	public String deposit() {
+	public String deposit(@ModelAttribute Customer customer) {
+
 		return "deposit";
 	}
 
-	@GetMapping("/deposithandler")
-	public String deposithandler() {
+	@PostMapping("/deposithandler")
+	public String deposithandler(@ModelAttribute PassBook passbookinfo , Model model, @ModelAttribute("Customer") Customer customer) {
+		System.out.println(passbookinfo.getDeposite()+" "+ customer.getName() );
+		bookService.deposite( passbookinfo.getDeposite());
+		model.addAttribute("depAmount", passbookinfo.getDeposite());
+		
 		return "deposithandler";
 	}
 
@@ -95,7 +108,18 @@ public class BankController {
 	}
 
 	@GetMapping("/checkbal")
-	public String checkbalance() {
+	public String checkbalance(@ModelAttribute PassBook passbookinfo , Model model) {
+		
+		model.addAttribute("balance", passbookinfo.getBalance());
 		return "checkbal";
+	}
+	
+	@GetMapping("customerById/{customer_id}")
+	public String customerDetails(@PathVariable("customer_id") int id, Model model) {
+		Optional<Customer> fetchcustomerDetails = bankService.fetchcustomerDetails(id);
+		model.addAttribute("fetchcustomerDetails", fetchcustomerDetails);
+		
+		return "Welcome";
+		
 	}
 }
